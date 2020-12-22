@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="oriflame.tipo_list">
+      <field name="name">Tipo de Producto</field>
+      <field name="model">oriflame.tipo</field>
+      <field name="arch" type="xml"> 
+        <tree>
+          <field name="id"/>
+          <field name="nombret"/>      
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="oriflame.tipo_form">
+            <field name="name">Tipo</field>
+            <field name="model">oriflame.tipo</field>
+            <field name="arch" type="xml">
+                <form string="oriflame form">
+                    <sheet>
+                        <group col="4">
+                            <separator string="Datos Tipo de Productos" colspan="4"/>
+                            <field name="id"/>
+                            <field name="nombret"/> 
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+      </record>
+
+    <record model="ir.actions.act_window" id="oriflame.tipo_action_window">
+      <field name="name">Lista Tipo de Productos</field>
+      <field name="res_model">oriflame.tipo</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="oriflame.tipo_action_server">
+      <field name="name">oriflame server</field>
+      <field name="model_id" ref="model_oriflame_tipo"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <menuitem name="Tipo de Productos" id="oriflame.menu_tipo" parent="inventario_oriflame" action="oriflame.tipo_action_window"/>
+    </data>
+</odoo>

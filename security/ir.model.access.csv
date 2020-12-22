@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_oriflame_proveedor,oriflame.proveedor,model_oriflame_proveedor,,1,1,1,1
+access_oriflame_producto,oriflame.producto,model_oriflame_producto,,1,1,1,1
+access_oriflame_tipo,oriflame.tipo,model_oriflame_tipo,,1,1,1,1
+access_oriflame_pedido,oriflame.pedido,model_oriflame_pedido,,1,1,1,1
+access_oriflame_detallepedido,oriflame.detallepedido,model_oriflame_detallepedido,,1,1,1,1

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>  
+    <menuitem name="Ariela Oriflame" id="oriflame_menu_root" sequence="450"/>
+
+    <!-- menu categories -->
+    
+    <menuitem name="Control de Inventario" id="inventario_oriflame" parent="oriflame_menu_root"/>    
+
+
+  </data>
+</odoo>

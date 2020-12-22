@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    
+    <record model="ir.ui.view" id="oriflame.facturap_list">
+      <field name="name">Productos</field>
+      <field name="model">oriflame.producto</field>
+      <field name="arch" type="xml"> 
+        <tree>
+          <field name="id"/>
+          <field name="nombrep"/>
+          <field name="codigo"/>
+          <field name="punto"/>
+          <field name="preciop"/>
+          <field name="tipo_id"/>
+          <field name="stock"/>                      
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="oriflame.facturap_form">
+            <field name="name">Productos</field>
+            <field name="model">oriflame.producto</field>
+            <field name="arch" type="xml">
+                <form string="oriflame form">
+                    <sheet>
+                        <group col="4">
+                            <separator string="Datos de Productos" colspan="4"/>
+                            <field name="id"/>
+                            <field name="nombrep"/>
+                            <field name="codigo"/>
+                            <field name="punto"/>
+                            <field name="preciop"/> 
+                            <field name="tipo_id"/>
+                            <field name="stock"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+      </record>
+
+    <record model="ir.actions.act_window" id="oriflame.producto_action_window">
+      <field name="name">Lista Productos</field>
+      <field name="res_model">oriflame.producto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- server action to the one above -->
+    <record model="ir.actions.server" id="oriflame.producto_action_server">
+      <field name="name">oriflame server</field>
+      <field name="model_id" ref="model_oriflame_producto"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+
+    <menuitem name="Productos" id="oriflame.menu_producto" parent="inventario_oriflame" action="oriflame.producto_action_window"/>
+    </data>
+</odoo>
