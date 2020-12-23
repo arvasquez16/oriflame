@@ -25,16 +25,28 @@ class Producto(models.Model):
     punto = fields.Integer(string="Puntos Producto")
     preciop = fields.Integer(string="Precio")
     tipo_id = fields.Many2one('oriflame.tipo')
-    stock = fields.Integer( string= "Stock")
+    stock = fields.Integer(compute ="_cal_cantidad", string= "Stock")
     ingreso = fields.Integer(compute="_ingreso")
-    
+    egreso = fields.Integer(compute="_egreso")
+
     pedido_ids = fields.One2many('oriflame.pedido', 'producto_id')
+   
+    @api.one
+    @api.depends('detalle_producto_ids')
+    def _egreso(self):
+        for detalle_producto in self.detalle_producto_ids:
+            self.egreso += detalle_producto.cantidad
 
     @api.one
     @api.depends('pedido_ids')
     def _ingreso(self):
         for pedido_ids in self.pedido_ids:
             self.ingreso += pedido_ids.cantidadp
+
+    @api.one
+    @api.depends('ingreso','egreso')
+    def _cal_cantidad(self):
+        self.stock = self.ingreso - self.egreso
 
    
 class Tipo(models.Model):
