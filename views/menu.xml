@@ -6,6 +6,7 @@
     <!-- menu categories -->
     
     <menuitem name="Control de Inventario" id="inventario_oriflame" parent="oriflame_menu_root"/>    
+    <menuitem name="Cliente" id="cliente_oriflame" parent="oriflame_menu_root"/>
 
 
   </data>
