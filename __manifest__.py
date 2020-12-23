@@ -22,7 +22,7 @@
 
     # always loaded
     'data': [
-        'security/ir.model.access.csv',
+       # 'security/ir.model.access.csv',
         #'views/views.xml',
         'views/menu.xml',
         'views/proveedor.xml',
@@ -31,9 +31,10 @@
         'views/pedido.xml',
         'views/detallepedido.xml',
         'reports/report_detallepedido.xml',
-        'views/cliente.xml',
-        'views/factura.xml',
-        'views/detalle_producto.xml',
+        #'views/cliente.xml',
+       # 'views/factura.xml',
+      #  'views/detalle_producto.xml',
+	'security/ir.model.access.csv',	
     ],
     # only loaded in demonstration mode
     'demo': [
