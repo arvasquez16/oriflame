@@ -31,9 +31,9 @@
         'views/pedido.xml',
         'views/detallepedido.xml',
         'reports/report_detallepedido.xml',
-        # 'views/cliente.xml',
-        # 'views/factura.xml',
-        # 'views/detalle_producto.xml',
+        'views/cliente.xml',
+        'views/factura.xml',
+        'views/detalle_producto.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
