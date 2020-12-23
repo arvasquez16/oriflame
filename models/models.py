@@ -94,3 +94,64 @@ class Detallepedido(models.Model):
      def _totalpuntosdet(self):
         for pedido in self.pedido_ids:
           self.totalpuntosdet += pedido.totalpuntos
+
+class Cliente(models.Model):
+    _name = 'oriflame.cliente'
+    _rec_name = 'nombre'
+
+    nombre = fields.Char()
+    rut = fields.Char()
+    celular = fields.Char()
+    correo = fields.Char()
+    direccion = fields.Text()
+
+    factura_ids = fields.One2many('oriflame.factura', 'cliente_id')
+
+class Factura(models.Model):
+    _name = 'oriflame.factura'
+    _rec_name = 'id'
+
+
+    precio = fields.Integer(compute="_precio_factura")
+    estado = fields.Selection([ ('pendiente', 'Pendiente'),('entregado', 'Entregado')], default='pendiente')
+
+    cliente_id = fields.Many2one('oriflame.cliente')
+    detalle_producto_ids = fields.One2many('oriflame.detalle_producto', 'factura_id')
+
+
+    @api.one
+    @api.depends('detalle_producto_ids')
+    def _precio_factura(self):
+        total_precio_producto = 0
+        for detalle_producto in self.detalle_producto_ids:
+            total_precio_producto += detalle_producto.precio
+       
+        self.precio = total_precio_producto
+
+class Detalle_producto(models.Model):
+    _name = 'oriflame.detalle_producto'
+    _rec_name = 'id'
+
+    cantidad = fields.Integer()
+    precio = fields.Integer(compute="_precio_productos") 
+    stock = fields.Integer(compute="_stock")
+
+    factura_id = fields.Many2one('oriflame.factura')
+    producto_id = fields.Many2one('oriflame.producto')
+
+    @api.one
+    @api.depends('producto_id', 'cantidad')
+    def _precio_productos(self):
+        for producto in self.producto_id:
+            self.precio = producto.preciop * self.cantidad
+
+    @api.one
+    @api.depends('producto_id')
+    def _stock(self):
+        for producto in self.producto_id:
+            self.stock = producto.stock
+
+    @api.constrains('cantidad')
+    def _validar_stock(self):
+        if self.stock < 0:
+            raise ValidationError('No hay suficiente stock')

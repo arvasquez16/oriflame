@@ -4,3 +4,6 @@ access_oriflame_producto,oriflame.producto,model_oriflame_producto,,1,1,1,1
 access_oriflame_tipo,oriflame.tipo,model_oriflame_tipo,,1,1,1,1
 access_oriflame_pedido,oriflame.pedido,model_oriflame_pedido,,1,1,1,1
 access_oriflame_detallepedido,oriflame.detallepedido,model_oriflame_detallepedido,,1,1,1,1
+access_cliente,oriflame.cliente,model_oriflame_cliente,,1,1,1,1
+access_factura,oriflame.factura,model_oriflame_factura,,1,1,1,1
+access_detalle_producto,oriflame.detalle_producto,model_oriflame_detalle_producto,,1,1,1,1
