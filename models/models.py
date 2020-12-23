@@ -30,7 +30,7 @@ class Producto(models.Model):
     egreso = fields.Integer(compute="_egreso")
 
     pedido_ids = fields.One2many('oriflame.pedido', 'producto_id')
-   
+    detalle_producto_ids = fields.One2many('oriflame.detalle_producto', 'producto_id')   
     @api.one
     @api.depends('detalle_producto_ids')
     def _egreso(self):
