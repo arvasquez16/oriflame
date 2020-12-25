@@ -109,7 +109,7 @@ class Detallepedido(models.Model):
 
 class Cliente(models.Model):
     _name = 'oriflame.cliente'
-    _rec_name = 'nombre'
+    _rec_name = 'nombrec'
 
     nombrec = fields.Char()
     rutc = fields.Char()
