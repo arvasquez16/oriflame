@@ -111,11 +111,11 @@ class Cliente(models.Model):
     _name = 'oriflame.cliente'
     _rec_name = 'nombrec'
 
-    nombrec = fields.Char()
-    rutc = fields.Char()
-    celularc = fields.Char()
-    correoc = fields.Char()
-    direccionc = fields.Text()
+    nombrec = fields.Char(string ="Nombre Cliente")
+    rutc = fields.Char(string="Rut")
+    celularc = fields.Char(String="Celular")
+    correoc = fields.Char(String="Correo")
+    direccionc = fields.Text(String="Direccion Envio")
 
     factura_ids = fields.One2many('oriflame.factura', 'cliente_id')
 
